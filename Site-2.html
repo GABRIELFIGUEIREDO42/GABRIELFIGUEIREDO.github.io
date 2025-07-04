@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alta Performance Médica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --amarelo-suave: #e6c200;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: #0d0d0d;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    header {
+      background: #0d0d0d;
+      box-shadow: 0 2px 10px rgba(230, 194, 0, 0.2);
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--amarelo-suave);
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .destaque-principal {
+      padding-top: 100px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(#0d0d0d, #050505);
+    }
+    .destaque-principal .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+    .imagem-destaque {
+      flex: 1;
+      text-align: center;
+    }
+    .imagem-destaque img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(230, 194, 0, 0.25);
+    }
+    .frase-impacto {
+      flex: 1;
+      max-width: 500px;
+      text-align: left;
+    }
+    .frase-impacto h2 {
+      color: var(--amarelo-suave);
+      font-size: 32px;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+    .alerta-urgente {
+      margin-top: 20px;
+      background-color: rgba(230, 194, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--amarelo-suave);
+    }
+    .alerta-urgente h3 {
+      color: #fff;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .alerta-urgente p {
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+    .btn-destaque {
+      display: inline-block;
+      background: var(--amarelo-suave);
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .btn-destaque:hover {
+      background: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: var(--amarelo-suave);
+    }
+    .hero-content p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--amarelo-suave);
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: #ffffff;
+      color: #000;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-title h2 {
+      font-size: 36px;
+      color: var(--amarelo-suave);
+    }
+    .services, .about, .contact {
+      padding: 80px 0;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .service-card {
+      background: #262626;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(230, 194, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    .service-icon {
+      font-size: 40px;
+      color: var(--amarelo-suave);
+      margin-bottom: 20px;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #1a1a1a;
+      padding: 40px;
+      border-radius: 10px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #333;
+      color: white;
+    }
+    footer {
+      background: #000;
+      color: #ffffff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    .social-links a {
+      color: var(--amarelo-suave);
+      font-size: 20px;
+      margin: 0 10px;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: #FFFFFF;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 99;
+    }
+
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      .frase-impacto h2 {
+        font-size: 24px;
+      }
+      .alerta-urgente h3 {
+        font-size: 18px;
+      }
+      .destaque-principal .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .frase-impacto {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Alta<span>Performance</span></div>
+        <div class="nav-links">
+          <a href="#services">Serviços</a>
+          <a href="#about">Sobre</a>
+          <a href="#contact">Contato</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="destaque-principal">
+    <div class="container">
+      <div class="imagem-destaque">
+        <img src="https://img.freepik.com/fotos-premium/um-empresario-masculino-sorridente-e-orgulhoso-no-trabalho-de-frente-para-a-camera-vestido-de-empresario-profissional_781958-9453.jpg" alt="Imagem Expandida" style="max-width: 700px; width: 100%; border-radius: 16px; box-shadow: 0 0 60px rgba(230, 194, 0, 0.4); margin-bottom: 20px;" />
+        <h2 style="color: #e6c200; font-size: 32px; font-style: italic; text-align: center; margin-top: 30px;">Com inteligência específica, sua performance muda em apenas 4h.</h2>
+      </div>
+      
+      <div style="flex: 1; max-width: 800px; text-align: center; margin-top: 40px;">
+        <h2 style="color: #e6c200; font-size: 36px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">"Esforço e Competência"</h2>
+        <div class="alerta-urgente" style="max-width: 600px; margin: 0 auto;">
+          <h3 style="font-size: 26px; color: #e6c200;">ÚLTIMAS VAGAS DISPONÍVEIS</h3>
+          <p style="font-size: 18px; line-height: 1.6;">Aprenda a usar a inteligência do seu treino e da sua profissão.</p>
+          <p style="font-size: 18px; line-height: 1.6; margin-bottom: 25px;">Não espere mais para alcançar resultados reais.</p>
+          <a href="#contact" class="btn-destaque" style="font-size: 16px; padding: 15px 40px;">QUERO SABER MAIS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Mais Resultados - PRIMEIRA GALERIA (IMAGENS SIMÉTRICAS) -->
+  <section class="galeria-imagens" style="padding: 80px 0; background: #1a1a1a;">
+    <div class="container">
+      <h2 style="text-align: center; color: #e6c200; font-size: 36px; margin-bottom: 50px; text-transform: uppercase;">Mais Resultados</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; align-items: center; justify-content: center;">
+        <div style="text-align: center;">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.dHEwDAqOJkdOx9txOYhPvAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" 
+               alt="Resultado 1" 
+               style="width: 100%; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 10px 30px rgba(230, 194, 0, 0.2); transition: all 0.4s ease; cursor: pointer;"
+               onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 15px 40px rgba(230, 194, 0, 0.3)'"
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(230, 194, 0, 0.2)'">
+          <p style="margin-top: 20px; font-size: 18px; color: #e6c200; font-weight: 600;">Antes e Depois - Caso 1</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="https://tse1.mm.bing.net/th/id/OIP.mcgfN9PCTMsZyBFdXbtIQgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" 
+               alt="Resultado 2" 
+               style="width: 100%; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 10px 30px rgba(230, 194, 0, 0.2); transition: all 0.4s ease; cursor: pointer;"
+               onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 15px 40px rgba(230, 194, 0, 0.3)'"
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(230, 194, 0, 0.2)'">
+          <p style="margin-top: 20px; font-size: 18px; color: #e6c200; font-weight: 600;">Antes e Depois - Caso 2</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section" style="padding: 60px 0; background: #0d0d0d;">
+    <div class="container" style="text-align: center;">
+      <h2 style="color: #e6c200; font-size: 32px; margin-bottom: 20px;">Assista ao Vídeo</h2>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto; border-radius: 12px; box-shadow: 0 0 20px rgba(230, 194, 0, 0.2);">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Excelência em Saúde</h1>
+        <p>Tecnologia avançada e atendimento humanizado para sua melhor performance</p>
+        <a href="#contact" class="btn">Agende Sua Consulta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Mais Resultados - SEGUNDA GALERIA (IMAGENS SIMÉTRICAS) -->
+  <section class="galeria-imagens" style="padding: 80px 0; background: #1a1a1a;">
+    <div class="container">
+      <h2 style="text-align: center; color: #e6c200; font-size: 36px; margin-bottom: 50px; text-transform: uppercase;">Mais Resultados</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; align-items: center; justify-content: center;">
+        <div style="text-align: center;">
+          <img src="https://static.vecteezy.com/ti/fotos-gratis/p1/5297454-medico-medico-de-uniforme-branco-jaleco-consultoria-empresario-paciente-fazendo-exame-como-hospital-profissionalismo-conceito-gratis-foto.jpg" 
+               alt="Consulta Médica" 
+               style="width: 100%; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 10px 30px rgba(230, 194, 0, 0.2); transition: all 0.4s ease; cursor: pointer;"
+               onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 15px 40px rgba(230, 194, 0, 0.3)'"
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(230, 194, 0, 0.2)'">
+          <p style="margin-top: 20px; font-size: 18px; color: #e6c200; font-weight: 600;">Atendimento Personalizado</p>
+        </div>
+        <div style="text-align: center;">
+          <img src="https://th.bing.com/th/id/R.5113e3729064ca44dc1ad0e41b3ee91b?rik=nnTNXjQBt71bEg&pid=ImgRaw&r=0" 
+               alt="Equipamento Médico" 
+               style="width: 100%; height: 300px; object-fit: cover; border-radius: 16px; box-shadow: 0 10px 30px rgba(230, 194, 0, 0.2); transition: all 0.4s ease; cursor: pointer;"
+               onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 15px 40px rgba(230, 194, 0, 0.3)'"
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(230, 194, 0, 0.2)'">
+          <p style="margin-top: 20px; font-size: 18px; color: #e6c200; font-weight: 600;">Tecnologia Avançada</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossos Serviços</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+          <h3>Check-up Completo</h3>
+          <p>Exames preventivos para avaliação completa da sua saúde</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-procedures"></i></div>
+          <h3>Cirurgia Robótica</h3>
+          <p>Tecnologia de ponta para procedimentos precisos</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-user-md"></i></div>
+          <h3>Atendimento Personalizado</h3>
+          <p>Planos de saúde individualizados para suas necessidades</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sobre Nós</h2>
+      </div>
+      <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 18px; color: #ccc;">
+        A Alta Performance Médica é uma clínica voltada para excelência no cuidado com a saúde. Atuamos com tecnologia de ponta, equipe altamente qualificada e foco no bem-estar do paciente. Nosso compromisso é proporcionar atendimento humanizado, rápido e eficiente, com soluções inovadoras e personalizadas.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Entre em Contato</h2>
+      </div>
+      <div class="contact-form">
+        <form action="https://formsubmit.co/seuemail@empresa.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+          
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="logo">Alta<span>Performance</span></div>
+      <div class="social-links">
+        <a href="https://facebook.com/seucliente" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/seucliente" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/in/seucliente" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p>&copy; 2025 Alta Performance Médica. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a href="https://api.whatsapp.com/send?phone=5582999999999&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta!" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</body>
+</html>
