@@ -387,29 +387,36 @@
         <h2>Entre em Contato</h2>
       </div>
       <div class="contact-form">
-        <form action="https://formsubmit.co/seuemail@empresa.com" method="POST">
+        <form action="https://formsubmit.co/seu-email@dominio.com" method="POST">
+           
+          <!-- enviar dados para email via FormSubmit -->
           <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+          <input type="hidden" name="_next" value="https://GABRIELFIGUEREDO.github.io/obrigado.html">
+          <input type="hidden" name="_template" value="box">
           
           <div class="form-group">
-            <label for="name">Nome</label>
+            <label for="name">Nome*</label>
             <input type="text" id="name" name="name" required>
           </div>
+          
           <div class="form-group">
-            <label for="email">E-mail</label>
+            <label for="email">E-mail*</label>
             <input type="email" id="email" name="email" required>
           </div>
+          
           <div class="form-group">
             <label for="phone">Telefone</label>
             <input type="tel" id="phone" name="phone">
           </div>
+          
           <div class="form-group">
-            <label for="message">Mensagem</label>
+            <label for="message">Mensagem*</label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
+          
           <button type="submit" class="btn">Enviar Mensagem</button>
           
-          <!-- BOTÃO DO TYPEFORM ADICIONADO AQUI -->
+          <!-- Botão do Typeform -->
           <div style="text-align: center; margin-top: 30px;">
             <p style="color: #ccc; margin-bottom: 15px;">Ou responda nosso questionário rápido:</p>
             <a href="https://form.typeform.com/to/ofOV8F6p" 
@@ -439,5 +446,18 @@
   <a href="https://api.whatsapp.com/send?phone=5582999999999&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta!" class="whatsapp-btn" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <script>
+    document.getElementById('phone').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 11) value = value.substring(0, 11);
+      
+      // Formatação: (XX) XXXXX-XXXX
+      if (value.length > 2) value = `(${value.substring(0,2)}) ${value.substring(2)}`;
+      if (value.length > 10) value = `${value.substring(0,10)}-${value.substring(10)}`;
+      
+      e.target.value = value;
+    });
+  </script>
 </body>
 </html>
